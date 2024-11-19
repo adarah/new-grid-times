@@ -52,7 +52,7 @@ const SuperHeader = styled.div`
   background: var(--color-gray-900);
   color: white;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: none;
   }
 `;
@@ -116,12 +116,11 @@ const MainHeader = styled(MaxWidthWrapper)`
 
   @media ${QUERIES.tabletAndUp} {
     margin-top: 48px;
-    margin-bottom: 72px;
+    margin-bottom: ${72+8}px;
   }
 
   @media ${QUERIES.laptopAndUp} {
     margin-top: 16px;
-    margin-bottom: 72px;
 
     /* Centers the logo IN THE VIEWPORT.
        It has an assymetrical distance to ActionGroup and UserActionGroup.

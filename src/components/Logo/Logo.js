@@ -27,13 +27,15 @@ const Link = styled.a`
 
   @media ${QUERIES.tabletAndUp} {
     font-size: 4rem;
+    line-height: ${84/64};
   }
 `;
 
 const TodaysDate = styled.p`
   font-size: 1.125rem;
   font-weight: var(--font-weight-medium);
-  margin-top: -1rem;
+  margin-top: ${-12/16}rem;
+  line-height: ${24/16/1.125};
 `;
 
 export default Logo;

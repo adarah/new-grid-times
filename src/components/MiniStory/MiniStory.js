@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import Image from '../Image';
 
 const MiniStory = ({ id, image, title }) => {
   return (
     <a href={`/story/${id}`}>
       <Wrapper>
-        <Image alt={image.alt} src={image.src} />
+        <StyledImage alt={image.alt} src={image.src} />
         <Title>{title}</Title>
       </Wrapper>
     </a>
@@ -18,7 +19,7 @@ const Wrapper = styled.article`
   gap: 8px;
 `;
 
-const Image = styled.img`
+const StyledImage = styled(Image)`
   width: 100%;
   aspect-ratio: 220 / 132;
   object-fit: cover;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { QUERIES } from '../../constants';
+import Image from '../Image';
 
 const MainStory = ({
   id,
@@ -13,7 +14,7 @@ const MainStory = ({
   return (
     <Wrapper {...delegated}>
       <a href={`/story/${id}`}>
-        <Image alt={image.alt} src={image.src} />
+        <StyledImage alt={image.alt} src={image.src} />
         <Heading>{title}</Heading>
       </a>
       <Abstract>
@@ -28,17 +29,20 @@ const Wrapper = styled.article`
   color: var(--color-gray-900);
 `;
 
-const Image = styled.img`
+const StyledImage = styled(Image)`
   display: block;
   width: 100%;
   margin-bottom: 12px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 4px;
 `;
 
 const Heading = styled.h2`
   margin-bottom: 8px;
   font-size: 1.5rem;
   font-weight: var(--font-weight-bold);
-  line-height: 1.3;
+  line-height: ${28/ 16 / 1.5};
 `;
 
 const Abstract = styled.p`

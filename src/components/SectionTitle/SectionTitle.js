@@ -2,10 +2,10 @@ import React from 'react';
 
 import styled from 'styled-components/macro';
 
-const SectionTitle = ({ children, cornerLink }) => {
+const SectionTitle = ({ children, cornerLink, className}) => {
   return (
     <Wrapper>
-      <Title>{children}</Title>
+      <Title className={className}>{children}</Title>
       {cornerLink && (
         <CornerLink href={cornerLink.href}>
           {cornerLink.content}

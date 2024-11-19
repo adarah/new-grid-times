@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { QUERIES } from '../../constants';
+import Image from '../Image/Image';
 
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
   return (
     <a href={`/story/${id}`}>
       <Wrapper>
-        <Image alt={image.alt} src={image.src} />
+        <ImageWrapper>
+          <StyledImage alt={image.alt} src={image.src}/>
+        </ImageWrapper>
         <Heading>{title}</Heading>
         <Abstract>{abstract}</Abstract>
       </Wrapper>
@@ -21,10 +25,17 @@ const Wrapper = styled.article`
   gap: 4px 16px;
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
+
+  @media ${QUERIES.tabletOnly} {
+    display: block;
+  }
 `;
 
-const Image = styled.img`
+const ImageWrapper = styled.div`
   grid-area: image;
+`;
+
+const StyledImage = styled(Image)`
   display: block;
   width: 100%;
   height: 120px;
@@ -33,15 +44,23 @@ const Image = styled.img`
 `;
 
 const Heading = styled.h2`
+  max-width: 250px;
   grid-area: heading;
   font-size: 1.125rem;
   font-weight: var(--font-weight-bold);
-  line-height: 1.3;
+  line-height: ${25 / 16 / 1.125};
+
   /* Optical alignment */
   margin-top: -2px;
+
+  @media ${QUERIES.tabletOnly} {
+    margin-top: 0;
+  }
 `;
 
 const Abstract = styled.p`
+  max-width: 250px;
+
   /* Hides the overflow caused by having this inside a grid container that forces it's height to grow*/
   align-self: start;
 

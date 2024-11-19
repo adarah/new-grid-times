@@ -39,6 +39,7 @@ const Avatar = styled.img`
 
 const AuthorName = styled.p`
   font-size: 1.125rem;
+  line-height: ${24 / 16 / 1.125};
   font-weight: var(--font-weight-medium);
   color: var(--color-gray-700);
   margin-bottom: 4px;
@@ -47,7 +48,7 @@ const AuthorName = styled.p`
 const ArticleTitle = styled.h3`
   font-size: 1.125rem;
   font-weight: var(--font-weight-bold);
-  line-height: 1.3;
+  line-height: ${22 / 16 / 1.125};
   text-wrap: pretty;
 `;
 
