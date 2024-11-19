@@ -42,7 +42,9 @@ const Heading = styled.h2`
 `;
 
 const Abstract = styled.p`
-  height: min-content;
+  /* Hides the overflow caused by having this inside a grid container that forces it's height to grow*/
+  align-self: start;
+
   grid-area: abstract;
   font-size: 1rem;
   white-space: pre-wrap;
