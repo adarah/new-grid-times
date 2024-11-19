@@ -29,7 +29,19 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
+        <DesktopActionGroup>
+          <button>
+            <Search size={24} />
+          </button>
+          <button>
+            <Menu size={24} />
+          </button>
+        </DesktopActionGroup>
         <Logo />
+        <DesktopUserActionGroup>
+          <Button>Subscribe</Button>
+          <SubscriberLink href="/">Already a subscriber?</SubscriberLink>
+        </DesktopUserActionGroup>
       </MainHeader>
     </header>
   );
@@ -39,6 +51,10 @@ const SuperHeader = styled.div`
   padding: 16px 0;
   background: var(--color-gray-900);
   color: white;
+
+  @media ${QUERIES.desktopAndUp} {
+    display: none;
+  }
 `;
 
 const Row = styled(MaxWidthWrapper)`
@@ -59,12 +75,51 @@ const ActionGroup = styled.div`
   }
 `;
 
+const DesktopActionGroup = styled(ActionGroup)`
+  display: none;
+  color: var(--color-gray-900);
+
+  @media ${QUERIES.desktopAndUp} {
+    display: flex;
+  }
+`;
+
+const DesktopUserActionGroup = styled.div`
+  display: none;
+  align-self: end;
+
+  @media ${QUERIES.desktopAndUp} {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const SubscriberLink = styled.a`
+  color: var(--color-gray-900);
+  font-family: var(--font-family-serif);
+  font-style: italic;
+  font-size: ${14 / 16}rem;
+  text-decoration: underline;
+`;
+
 const MainHeader = styled(MaxWidthWrapper)`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+
+  @media ${QUERIES.tabletAndUp} {
+    margin-top: 48px;
+    margin-bottom: 72px;
+  }
+
+  @media ${QUERIES.desktopAndUp} {
+    margin-top: 16px;
+    justify-content: space-between;
+  }
 `;
 
 export default Header;
