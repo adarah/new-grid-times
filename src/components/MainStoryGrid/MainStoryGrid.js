@@ -12,6 +12,7 @@ import MainStory from '../MainStory';
 import SecondaryStory from '../SecondaryStory';
 import OpinionStory from '../OpinionStory';
 import Advertisement from '../Advertisement';
+import { QUERIES } from '../../constants';
 
 const MainStoryGrid = () => {
   return (
@@ -24,7 +25,6 @@ const MainStoryGrid = () => {
         <StoryList>
           {SECONDARY_STORIES.map((story, index) => (
             <StoryWrapper>
-
               <SecondaryStory key={story.id} {...story} />
             </StoryWrapper>
           ))}
@@ -32,14 +32,16 @@ const MainStoryGrid = () => {
       </SecondaryStorySection>
 
       <OpinionSection>
-        <SectionTitle>Opinion</SectionTitle>
-        <StoryList>
+        <OpinionSectionTitleWrapper>
+          <SectionTitle>Opinion</SectionTitle>
+        </OpinionSectionTitleWrapper>
+        <OpinionStoryList>
           {OPINION_STORIES.map((story, index) => (
-            <StoryWrapper>
+            <OpinionStoryWrapper>
               <OpinionStory key={story.id} {...story} />
-            </StoryWrapper>
+            </OpinionStoryWrapper>
           ))}
-        </StoryList>
+        </OpinionStoryList>
       </OpinionSection>
 
       <AdvertisementSection>
@@ -52,10 +54,10 @@ const MainStoryGrid = () => {
 const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
-    'main-story'
-    'secondary-stories'
-    'opinion-stories'
-    'advertisement';
+    "main-story"
+    "secondary-stories"
+    "opinion-stories"
+    "advertisement";
   gap: 48px;
   margin-bottom: 48px;
 `;
@@ -73,6 +75,19 @@ const StoryList = styled.div`
   flex-direction: column;
 `;
 
+const OpinionSectionTitleWrapper = styled.div`
+  position: relative;
+  left: -4px;
+`;
+
+const OpinionStoryList = styled(StoryList)`
+  @media ${QUERIES.tabletOnly} {
+    flex-direction: row;
+    gap: 32px;
+    align-items: start;
+  }
+`;
+
 const StoryWrapper = styled.div`
   padding-block: 16px;
   border-bottom: solid 1px var(--color-gray-300);
@@ -84,6 +99,14 @@ const StoryWrapper = styled.div`
   ${StoryList} > &:last-child {
     border-bottom: revert;
     padding-bottom: 0;
+  }
+`;
+
+const OpinionStoryWrapper = styled(StoryWrapper)`
+  @media ${QUERIES.tabletOnly} {
+    width: 25%;
+    border-bottom: 0;
+    padding: 0;
   }
 `;
 

@@ -42,6 +42,7 @@ const Heading = styled.h2`
 `;
 
 const Abstract = styled.p`
+  height: min-content;
   grid-area: abstract;
   font-size: 1rem;
   white-space: pre-wrap;
