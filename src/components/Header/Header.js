@@ -79,24 +79,27 @@ const DesktopActionGroup = styled(ActionGroup)`
   display: none;
   color: var(--color-gray-900);
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: flex;
   }
 `;
 
 const DesktopUserActionGroup = styled.div`
   display: none;
-  align-self: end;
 
-  @media ${QUERIES.desktopAndUp} {
-    display: flex;
-    gap: 8px;
-    flex-direction: column;
-    align-items: center;
+  @media ${QUERIES.laptopAndUp} {
+    display: revert;
+    position: relative;
+    justify-self: end;
   }
 `;
 
 const SubscriberLink = styled.a`
+  position: absolute;
+  margin-top: 8px;
+  text-align: center;
+  width: 100%;
+
   color: var(--color-gray-900);
   font-family: var(--font-family-serif);
   font-style: italic;
@@ -116,9 +119,17 @@ const MainHeader = styled(MaxWidthWrapper)`
     margin-bottom: 72px;
   }
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     margin-top: 16px;
-    justify-content: space-between;
+    margin-bottom: 72px;
+
+    /* Centers the logo IN THE VIEWPORT.
+       It has an assymetrical distance to ActionGroup and UserActionGroup.
+       Flex with justify-content: space-between yields a different position */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    justify-content: revert;
+    justify-items: start;
   }
 `;
 
