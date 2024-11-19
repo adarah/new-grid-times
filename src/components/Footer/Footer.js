@@ -185,12 +185,9 @@ const MainNavArea = styled.div`
   @media ${QUERIES.tabletAndUp} {
     text-align: revert;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 32px 64px;
-  }
-
-  @media ${QUERIES.laptopAndUp} {
-    grid-auto-flow: column;
   }
 `;
 
@@ -218,6 +215,10 @@ const Subfooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${QUERIES.laptopAndUp} {
+    align-items: flex-start;
+  }
 `;
 
 const Logo = styled.a`
